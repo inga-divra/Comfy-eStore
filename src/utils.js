@@ -1,7 +1,3 @@
-//   ATTENTION!!!!!!!!!!!
-//   I SWITCHED TO PERMANENT DOMAIN
-//   DATA IS THE SAME JUST A DIFFERENT URL,
-//   DOES NOT AFFECT PROJECT FUNCTIONALITY
 
 const allProductsUrl = 'https://course-api.com/javascript-store-products'
 // temporary single product
@@ -15,10 +11,10 @@ const getElement = (selection) => {
   throw new Error(`Please check "${selection}" selector, no such element exist`)
 }
 
-const formatPrice = () => {}
+const formatPrice = () => { }
 
-const getStorageItem = () => {}
-const setStorageItem = () => {}
+const getStorageItem = () => { }
+const setStorageItem = () => { }
 
 export {
   allProductsUrl,
