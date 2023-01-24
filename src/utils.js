@@ -1,9 +1,8 @@
-const allProductsUrl =
-  'https://course-api.netlify.app/api/javascript-store-products';
-// temp single product
-// https://course-api.netlify.app/api/javascript-store-single-product?id=recmg2a1ctaEJNZhu
+const allProductsUrl = 'https://course-api.com/javascript-store-products'
+// temporary single product
+// 'https://course-api.com/javascript-store-single-product?id=rec43w3ipXvP28vog'
 const singleProductUrl =
-  'https://course-api.netlify.app/api/javascript-store-single-product';
+  'https://course-api.com/javascript-store-single-product'
 
 const getElement = (selection) => {
   const element = document.querySelector(selection);
