@@ -41,26 +41,31 @@ export const addToCart = (id) => {
   //more stuff coming up
   openCart();
 };
+
 function displayCartItemCount() {
   const amount = cart.reduce((total, cartItem) => {
     return (total += cartItem.amount);
   }, 0);
   cartItemCountDOM.textContent = amount;
 }
+
 function displayCartTotal() {
   let total = cart.reduce((total, cartItem) => {
     return (total += cartItem.price * cartItem.amount);
   }, 0);
   cartTotalDOM.textContent = `Total : ${formatPrice(total)} `;
 }
+
 function displayCartItemsDOM() {
   cart.forEach((cartItem) => {
     addToCartDOM(cartItem);
   })
 }
+
 function removeItem(id) {
   cart = cart.filter((cartItem) => cartItem.id !== id);
 }
+
 function increaseAmount(id) {
   let newAmount;
   cart = cart.map((cartItem) => {
@@ -72,6 +77,19 @@ function increaseAmount(id) {
   })
   return newAmount
 }
+
+function decreaseAmount(id) {
+  let newAmount;
+  cart = cart.map((cartItem) => {
+    if (cartItem.id === id) {
+      newAmount = cartItem.amount - 1
+      cartItem = { ...cartItem, amount: newAmount }
+    }
+    return cartItem
+  })
+  return newAmount
+}
+
 function setupCartFunctionality() {
   cartItemsDOM.addEventListener('click', function (e) {
     const element = e.target;
@@ -83,12 +101,21 @@ function setupCartFunctionality() {
       removeItem(id)
       parent.parentElement.remove();
     }
+    //increase
     if (parent.classList.contains('cart-item-increase-btn')) {
       const newAmount = increaseAmount(parentID);
       parent.nextElementSibling.textContent = newAmount;
     }
-    //increase
     //decrease
+    if (parent.classList.contains('cart-item-decrease-btn')) {
+      const newAmount = decreaseAmount(parentID);
+      if (newAmount === 0) {
+        removeItem(id)
+        parent.parentElement.parentElement.remove()
+      } else {
+        parent.previousElementSibling.textContent = newAmount
+      }
+    }
 
     displayCartItemCount();
     displayCartTotal();
