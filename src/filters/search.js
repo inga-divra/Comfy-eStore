@@ -10,20 +10,20 @@ const setupSearch = (store) => {
                 let { name } = product;
                 name = name.toLowerCase();
                 if (name.startsWith(value)) {
-                    return product
+                    return product;
                 }
             });
             display(newStore, getElement('.products-container'));
             if (newStore.length < 1) {
                 const products = getElement('.products-container');
                 products.innerHTML = `<h3 class="filter-error">
-            Sorry,no products matches your search
-            </h3>`
+       sorry, no products matched your search
+       </h3>`;
             }
         } else {
-            display(store, getElement('.products-container'))
+            display(store, getElement('.products-container'));
         }
-    })
+    });
 };
 
 export default setupSearch;
